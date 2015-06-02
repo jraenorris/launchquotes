@@ -4,13 +4,33 @@ require 'pg'
 
 
 def db_connection
+  connection_settings = { dbname: ENV["DATABASE_NAME"] || "quotes" }
+
+  if ENV["DATABASE_HOST"]
+    connection_settings[:host] = ENV["DATABASE_HOST"]
+  end
+
+  if ENV["DATABASE_USER"]
+    connection_settings[:user] = ENV["DATABASE_USER"]
+  end
+
+  if ENV["DATABASE_PASS"]
+    connection_settings[:password] = ENV["DATABASE_PASS"]
+  end
+
   begin
-    connection = PG.connect(dbname: "quotes")
+    connection = PG.connect(connection_settings)
     yield(connection)
   ensure
     connection.close
   end
 end
+
+
+
+
+
+
 
 db_connection { |conn| conn.exec("INSERT INTO quotes (quote) VALUES ($1)", ["It's not THAT bad"]) }
 
