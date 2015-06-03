@@ -34,8 +34,8 @@ get '/' do
 end
 
 get '/quoteme' do
-
-  erb :new
+  title = "Quote me"
+  erb :new, locals: {title: title}
 end
 
 post '/quoteme' do
@@ -49,10 +49,11 @@ end
 
 
 get '/splatme' do
+  title = "Give me a quote"
   quote_list = db_connection { |conn| conn.exec("SELECT quote FROM quotes;") }
   quote_length_hash = db_connection { |conn| conn.exec("SELECT COUNT(*) FROM quotes;")}
   quote_length = quote_length_hash[0]["count"]
   quote = quote_list.to_a.sample["quote"]
-  erb :view,  locals: {quote: quote}
+  erb :view,  locals: {quote: quote, title: title}
 
 end

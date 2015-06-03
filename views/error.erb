@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Quote Me</title>
-  </head>
 
-  <body>
+<div class="quote">
+  <form action="/quoteme" method="post">
+    <label for="quoter">Put your quote here:</label>
+    <input type="text" id="quoter" name="quoter" required>
+    <input type="submit" value="Add">
+  </form>
+</div>
 
-    <div class="quote">
-      <form action="/quoteme" method="post">
-        <label for="quoter">Put your quote here:</label>
-        <input type="text" id="quoter" name="quoter" required>
-        <input type="submit" value="Add">
-      </form>
-    </div>
+<br>
 
-    <br>
+<div class="error">You broke it. Try a different quote.</div>
+<br>
 
-    <div class="error">You broke it. Try a different quote.</div>
-    <br>
-
-    <div class="redirect"><a href="/splatme">Get some motivation</a>
-
-  </body>
-</html>
+<div class="redirect"><a href="/splatme">Get some motivation</a>
