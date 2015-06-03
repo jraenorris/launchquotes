@@ -29,12 +29,6 @@ end
 
 
 
-
-
-
-db_connection { |conn| conn.exec("INSERT INTO quotes (quote) VALUES ($1)", ["It's not THAT bad"]) }
-
-
 get '/' do
   redirect '/splatme'
 end
