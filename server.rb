@@ -47,21 +47,15 @@ post '/quoteme' do
   quoter = params['quoter']
   if /<.+>/.match(quoter)
     redirect '/error'
-  elsif (quoter == nil) || (quoter.delete(' '))
+  elsif (quoter == nil) || (quoter.delete(' ') == '')
     redirect '/error'
   else
     db_connection { |conn| conn.exec_params("INSERT INTO quotes (quote) VALUES ($1)", [params["quoter"]]) }
+    redirect '/splatme'
   end
 end
 
-post '/error' do
-  quoter = params['quoter']
-  if (quoter == nil) || (quoter.delete(' '))
-    redirect '/error'
-  else
-    db_connection { |conn| conn.exec_params("INSERT INTO quotes (quote) VALUES ($1)", [params["quoter"]]) }
-  end
-end
+
 
 get '/splatme' do
   title = "Give me a quote"
