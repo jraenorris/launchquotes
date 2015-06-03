@@ -38,13 +38,20 @@ get '/quoteme' do
   erb :new, locals: {title: title}
 end
 
+get '/error' do
+  title = "Quote me"
+  erb :error, locals: {title: title}
+end
+
+end
+
 post '/quoteme' do
   quoter = params['quoter']
-  if quoter != ''
+  if (quoter == nil) || (quoter.delete(' '))
+    redirect '/error'
+  else
     db_connection { |conn| conn.exec_params("INSERT INTO quotes (quote) VALUES ($1)", [params["quoter"]]) }
   end
-  redirect '/splatme'
-
 end
 
 
