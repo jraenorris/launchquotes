@@ -55,7 +55,11 @@ post '/quoteme' do
   end
 end
 
-
+get '/alltheinspiration' do
+  title = "All the Inspiration"
+  quote_list = db_connection { |conn| conn.exec("SELECT quote FROM quotes;") }
+  erb :viewall, locals: {quote_list: quote_list, title: title}
+end
 
 get '/splatme' do
   title = "Give me a quote"
