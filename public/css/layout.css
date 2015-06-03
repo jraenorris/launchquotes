@@ -6,7 +6,7 @@ body {
   background: url("/silly_smr15_copy.jpg") #1C2225;
   background-size: cover;
   text-align: center;
-  height: 667px;
+  height: 450px;
   color: #fff;
 }
 #header_content {
@@ -18,6 +18,22 @@ body {
 #header_content span {
   font-size: 3em;
 }
+
+#master_container {
+  text-align: center;
+  padding: 10% 20%;
+}
+
+#quote {
+  background: #ed197b;
+  text-align: center;
+  padding: 30px;
+  border-bottom: 5px solid #d60c67;
+  color: white;
+  font-size: 26px;
+
+}
+
 .page_header {
   padding: 50px 50px 50px 50px;
   color: #FFF;
@@ -34,6 +50,7 @@ body {
   margin-bottom: 115px;
   padding-top: 115px;
 }
+
 .daily_users {
   float: left;
   padding: 30px;
