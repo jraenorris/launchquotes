@@ -1,6 +1,9 @@
-DROP TABLE IF EXISTS quotes;
+DROP TABLE IF EXISTS blog, tags, type, contributer;
 
-CREATE TABLE quotes(
+
+CREATE TABLE blog(
   id SERIAL PRIMARY KEY,
-  quote VARCHAR(500) UNIQUE NOT NULL
-);
+  url VARCHAR(1000) UNIQUE NOT NULL,
+  description TEXT,
+  type INTEGER,  
+  );
